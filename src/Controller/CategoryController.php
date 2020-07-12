@@ -19,6 +19,8 @@ class CategoryController extends AbstractController
      */
     public function add(Request $request) :Response
     {
+        $message = '';
+
         $category = new Category();
         $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
@@ -28,8 +30,6 @@ class CategoryController extends AbstractController
             $em->persist($category);
             $em->flush();
             $message = "La catégorie a été ajoutée avec succès.";
-        } else {
-            $message = "Error: Impossible d'insérer la catégorie";
         }
 
         $categories = $this->getDoctrine()
