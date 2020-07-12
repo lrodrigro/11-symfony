@@ -1,0 +1,26 @@
+{# templates/wild/category.html.twig #}
+{% extends 'base.html.twig' %}
+{% block title %}Categories Program{% endblock %}
+
+{% block body %}
+    <h1>Ajouter une catégorie</h1>
+    {{ form_start(form) }}
+    {{ form_row(form.name) }}
+    <button class="btn">{{ button_label|default('Save') }}</button>
+    {{ form_end(form) }}
+    <div style="margin: 10px 0">
+        <span>{{ message }}</span>
+    </div>
+    <h3>Liste des catégories</h3>
+    {% for category in categories %}
+        <div>
+            <ul>
+                <li>
+                    {{ category.name }}
+                </li>
+            </ul>
+        </div>
+    {% else %}
+        Aucune category trouvée.
+    {% endfor %}
+{% endblock %}
